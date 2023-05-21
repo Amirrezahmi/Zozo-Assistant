@@ -1,0 +1,17 @@
+console.suo
+/node_modules/
+__pycache__/
+.vscode/
+/venv/
+*.pyc
+*.class
+*.exe
+*.log
+.DS_Store
+config.ini
+.env
+/temp/
+/cache/
+/dist/
+/build/
+/data/
