@@ -1,0 +1,13 @@
+pyaudio
+joblib
+nltk
+sklearn
+pygame
+pyttsx3
+gTTS
+word2number
+SpeechRecognition
+jsonlib-python3
+openai
+numpy
+pandas
