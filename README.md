@@ -5,8 +5,8 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 
 # Features
 - Speech recognition: Zozo can listen to user input through a microphone and convert it into text using the SpeechRecognition library.
-- Text-to-speech: Zozo can respond to users by converting text into speech using the pyttsx3 library and playing the audio using pygame.
-- Music player: Zozo can play a collection of music files in the "music" folder. Users can control playback with voice commands or by entering options manually.
+- Text-to-speech: Zozo can respond to users by converting text into speech using the pyttsx3 library.
+- Music player: Zozo can play a collection of music files in the "music" folder. Users can control playback with voice commands or by entering options.
 - Alarm: Users can set alarms by specifying the duration in seconds. Zozo will play a sound after the specified time has elapsed.
 - Date and time: Users can inquire about the current date and time, and Zozo will provide the information.
 - OpenAI integration: Utilize the OpenAI API for advanced language processing (API key required).
