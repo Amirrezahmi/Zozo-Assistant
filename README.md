@@ -1,7 +1,7 @@
 
 # Zozo Assistant
 
-Zozo Assistant is a Python-based voice-controlled assistant that uses natural language processing to answer questions and perform various tasks. The assistant can provide answers to pre-defined questions, play music, set alarms, tell the time and date, and engage in general conversation. It utilizes the OpenAI API for advanced language processing, but also includes a fallback pipeline model if the API is not available.
+Zozo Assistant is a Python-based voice-controlled assistant that uses natural language processing to answer questions and perform various tasks. The assistant can provide answers to pre-defined questions, play music, set alarms, tell the time and date, and engage in general conversation. It utilizes the OpenAI API for advanced language processing, but also includes a fallback pipeline model if the API is not available. The code in `train.py`, trains a chatbot using a decision tree classifier. It reads a dataset from our dataset named `datamain.txt`, which contains a collection of questions and corresponding answers. The chatbot learns from this dataset and creates a pipeline model using the scikit-learn library. The model is then saved as `model2.joblib` for future use.
 
 # Features
 - Speech recognition: Zozo can listen to user input through a microphone and convert it into text using the SpeechRecognition library.
@@ -11,7 +11,6 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - Date and time: Users can inquire about the current date and time, and Zozo will provide the information.
 - OpenAI integration: Utilize the OpenAI API for advanced language processing (API key required).
 - Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model.
-
 
 # Prerequisites
 
@@ -52,6 +51,8 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 7. At the beggining say "Zozo" or "Hey Zozo" to get the Asisstant attention.
 8. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
 9. To exit the chatbot, say "bye", "goodbye" or "exit".
+
+
 
 # Contributing
 
