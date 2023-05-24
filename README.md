@@ -39,18 +39,26 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
   git clone https://github.com/Amirrezahmi/Zozo-Assistant.git
 
 ```
-2. Install the required dependencies by running the following command:
+
+2. Navigate to the project directory:
+
+```bash
+
+  cd Zozo-Assistant
+
+```
+3. Install the required dependencies by running the following command:
 ```bash
   pip install -r requirements.txt
 ```
 # Usage
-3. Open the `main.py` file and locate the `OPENAI_API_KEY` variable. Paste your OpenAI API key into this variable.
-4. If you don't have a microphone or encounter any issues with the microphone-related functions, you can replace all instances of `listen()` with `input()` in the code.
-5. If `model2.joblib` dosen't work, delete it and run `train.py` again. Because sometimes the model only works on specefic version of Python that has trained before.
-6. Run the `main.py` script to start the Zozo Assistant.
-7. At the beggining say "Zozo" or "Hey Zozo" to get the Asisstant attention.
-8. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
-9. To exit the chatbot, say "bye", "goodbye" or "exit".
+4. Open the `main.py` file and locate the `OPENAI_API_KEY` variable. Paste your OpenAI API key into this variable.
+5. If you don't have a microphone or encounter any issues with the microphone-related functions, you can replace all instances of `listen()` with `input()` in the code.
+6. If `model2.joblib` dosen't work, delete it and run `train.py` again. Because sometimes the model only works on specefic version of Python that has trained before.
+7. Run the `main.py` script to start the Zozo Assistant.
+8. At the beggining say "Zozo" or "Hey Zozo" to get the Asisstant attention.
+9. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
+10. To exit the chatbot, say "bye", "goodbye" or "exit".
 
 
 
