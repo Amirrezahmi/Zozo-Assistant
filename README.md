@@ -60,7 +60,10 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 9. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
 10. To exit the chatbot, say "bye", "goodbye" or "exit".
 
+# secreenshot
+Here's an screenshot of some sample examples:
 
+![sample](https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/36a362f8-8b10-4cfc-aca7-97a7ae3ea6c2)
 
 # Contributing
 
