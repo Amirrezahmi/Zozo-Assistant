@@ -203,11 +203,11 @@ while True:
             d= "Which city you live?"
             print(d)
             speak(d)
-            location = input()
+            location = listen()
             d = "Which country?"
             print(d)
             speak(d)
-            country = input()
+            country = listen()
             if country in country_codes:
                 country= country_codes[country]
 
