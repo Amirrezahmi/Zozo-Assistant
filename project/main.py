@@ -144,8 +144,8 @@ mic = input()
 #if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
 #    r = sr.Recognizer()
     
-else:
-    pass
+#else:
+#    pass
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
     
