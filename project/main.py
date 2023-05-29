@@ -26,6 +26,7 @@ import speech_recognition as sr
 import json
 import os
 import openai
+import random
 #openai api
 OPENAI_API_KEY = ''    #Paste your API Key here
 messages=[
@@ -73,7 +74,20 @@ def temperature(location, country):
   main = weather(location, country)['main']
   return main['temp']
 
+def get_weather_advice(description):
+    cloudy_advice = ["No sunglasses", "Light jacket recommended", "Stay indoors if possible"]
+    rainy_advice = ["Get an umbrella", "Wear waterproof shoes", "Carry a raincoat"]
+    snowy_advice = ["Mittens and earmuffs", "Wear warm boots", "Drive carefully on slippery roads"]
+    default_advice = ["No particular advice", "Enjoy the weather!", "Stay hydrated"]
 
+    if description == "cloudy":
+        return random.choice(cloudy_advice)
+    elif description == "rainy":
+        return random.choice(rainy_advice)
+    elif description == "snowy":
+        return random.choice(snowy_advice)
+    else:
+        return random.choice(default_advice)
 # A Global variable for your name
 name = "Amirreza"
 def speak(text):
@@ -218,10 +232,12 @@ while True:
                 country=country
             try:
                 desc = description(location, country)
-                print("In", location, "the weather is", desc)
-                d=f"weather is {desc}"
+                d=f"In {location} the weather is {desc}"
                 speak(d)
                 print(d)
+                advice = get_weather_advice(desc)
+                speak(advice)
+                print(advice)
 
 
             except:
