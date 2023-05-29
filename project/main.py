@@ -100,6 +100,7 @@ def alarm():
     pygame.mixer.music.load('D:\Zozo-Assistant\project\Ring.wav')
     pygame.mixer.music.play()
 def starter():
+            r = sr.Recognizer()
             with sr.Microphone() as source:
                 audioo = r.listen(source)
                 txt = r.recognize_google(audioo)
@@ -140,8 +141,8 @@ w = "Welcome to Zozo Assistant. First thing first, do you have a microphone?"
 speak(w)
 print(w+" (y/n)")
 mic = input()
-if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
-    r = sr.Recognizer()
+#if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+#    r = sr.Recognizer()
     
 else:
     pass
