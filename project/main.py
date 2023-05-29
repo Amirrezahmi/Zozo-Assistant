@@ -22,7 +22,7 @@ from IPython.display import Audio, display
 import time
 from word2number import w2n
 import threading
-#import speech_recognition as sr
+import speech_recognition as sr
 import json
 import os
 import openai
