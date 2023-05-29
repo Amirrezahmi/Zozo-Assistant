@@ -127,8 +127,8 @@ speak(w)
 print(w+" (y/n)")
 mic = input()
 if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
-    #r = sr.Recognizer()
-    pass
+    r = sr.Recognizer()
+    
 else:
     pass
 while True:
