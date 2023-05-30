@@ -1,7 +1,7 @@
 '''
 Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
 Hope you like it ;)
-plus if you don't have microphone or had problem in this part, you can simply write "no" or "n".
+plus if you don't have microphone or had problem in this part, write "n" or "no" at the beginning!.
 '''
 import requests
 from country_codes import country_codes
@@ -22,7 +22,7 @@ from IPython.display import Audio, display
 import time
 from word2number import w2n
 import threading
-import speech_recognition as sr
+#import speech_recognition as sr
 import json
 import os
 import openai
@@ -39,7 +39,7 @@ def check_API():
     else:
         return "No"
 def api_not_worked():
-    pipeline = joblib.load('D:\Zozo-Assistant\project\model2.joblib') #change
+    pipeline = joblib.load('model2.joblib') #Pase your path 
     print("API didn't work! Now we are using our pipline model...")
     result = pipeline.predict([a])[0]
     print(result)
@@ -48,7 +48,7 @@ def api_not_worked():
 #weather
 def weather(location, country):
   # Returns full JSON object
-  apiKey = '' # Enter your API Key here for weather
+  apiKey = 'b30305181423db1df9a1e8212c3f0504' # Enter your API Key here for weather
   base = 'http://api.openweathermap.org/data/2.5/weather?q='
   url = base + location + ',' + country + '&units=metric&appid=' + apiKey
   response = requests.get(url).json()
@@ -75,7 +75,7 @@ def temperature(location, country):
   return main['temp']
 
 def get_weather_advice(description):
-    cloudy_advice = ["No sunglasses", "Light jacket recommended", "Stay indoors if possible"]
+    cloudy_advice = ["No sunglasses needed", "Light jacket recommended", "Stay indoors if possible"]
     rainy_advice = ["Get an umbrella", "Wear waterproof shoes", "Carry a raincoat"]
     snowy_advice = ["Mittens and earmuffs", "Wear warm boots", "Drive carefully on slippery roads"]
     default_advice = ["No particular advice", "Enjoy the weather!", "Stay hydrated"]
@@ -97,15 +97,8 @@ def speak(text):
 def alarm():
     # speak("Time's up!")
     pygame.mixer.init()
-    pygame.mixer.music.load('D:\Zozo-Assistant\project\Ring.wav')
+    pygame.mixer.music.load('Ring.wav')
     pygame.mixer.music.play()
-def starter():
-            r = sr.Recognizer()
-            with sr.Microphone() as source:
-                audioo = r.listen(source)
-                txt = r.recognize_google(audioo)
-                if 'zozo' in txt.lower() or 'hi zozo' in txt.lower():
-                     return 'zozo'  
 zero=0
 def one_time():
     global zero
@@ -121,8 +114,7 @@ def listen():
         r = sr.Recognizer()
         while True:
             with sr.Microphone() as source:
-                li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening", "I'm waiting for your input",
-                "What's going on?", "I'm listening", "Any updates?", "How can I help you?", "Any thoughts?"]
+                li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening"]
                 p=random.choice(li)
                 speak(p)
                 print(p)
@@ -143,28 +135,30 @@ def cleaner(x):
 
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
-# tts = gTTS('I am Zozo, how can I help you?') 
-# tts.save('hello.mp3')
-# sound_file = 'hello.mp3'
-# wn = Audio(sound_file, autoplay=True)
-# display(wn)
-#do you have mic?
 w = "Welcome to Zozo Assistant. First thing first, do you have a microphone?"
 speak(w)
 print(w+" (y/n)")
 mic = input()
-#if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
-#    r = sr.Recognizer()
+if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+    w="Say Zozo to get my attention!"
+    print(w)
+    speak(w)
+    r = sr.Recognizer()
     
-# else:
-#     pass
+else:
+    pass
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
-    
-        if starter()=='zozo':
-            pass
-        else:
-            continue
+        with sr.Microphone() as source:
+            audioo= r.listen(source)
+            try:
+                txt=r.recognize_google(audioo)
+                if 'zozo' in txt.lower() or "hi zozo" in txt.lower():
+                    pass
+                else:
+                    continue
+            except sr.UnknownValueError:
+                continue
     
                     
     while True:
@@ -173,7 +167,7 @@ while True:
             p = f"You are {name}."
             speak(p)
         elif "play music" in a:
-            folder_path = 'D:\Zozo-Assistant\project\music' #change based on ur path
+            folder_path = 'music' #change based on ur path
             music_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.mp3')]
 
             pygame.mixer.init()
