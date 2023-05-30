@@ -48,7 +48,7 @@ def api_not_worked():
 #weather
 def weather(location, country):
   # Returns full JSON object
-  apiKey = 'b30305181423db1df9a1e8212c3f0504' # Enter your API Key here for weather
+  apiKey = '' # Enter your API Key here for weather
   base = 'http://api.openweathermap.org/data/2.5/weather?q='
   url = base + location + ',' + country + '&units=metric&appid=' + apiKey
   response = requests.get(url).json()
