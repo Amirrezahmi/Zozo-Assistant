@@ -16,6 +16,8 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 # Prerequisites
 
 - Python 3.x
+- [OpenAI API](https://openai.com/)
+- [OpenWeather API](https://openweathermap.org/)
 - pyaudio
 - joblib
 - nltk
