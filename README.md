@@ -64,7 +64,8 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 # secreenshot
 Here's an screenshot of some sample examples:
 
-![sample](https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/36a362f8-8b10-4cfc-aca7-97a7ae3ea6c2)
+![uu](https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/78558750-979c-494a-bd6e-a509a09385db)
+
 
 # Contributing
 
