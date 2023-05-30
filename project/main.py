@@ -245,6 +245,7 @@ while True:
                 d="couldn't find any results!"
                 print(d)
                 speak(d)
+                continue 
         elif "set alarm" in a or "alarm" in a:
             # ask user for the time of the alarm
             speak("At what time do you want to set the alarm? Say in seconds.")
