@@ -1,7 +1,7 @@
 '''
 Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
 Hope you like it ;)
-plus if you don't have microphone or had problem in this part, you can write 'input()' instead of all functions called 'listen()' in the code.
+plus if you don't have microphone or had problem in this part, you can simply write "no" or "n".
 '''
 import requests
 from country_codes import country_codes
@@ -105,14 +105,25 @@ def starter():
                 audioo = r.listen(source)
                 txt = r.recognize_google(audioo)
                 if 'zozo' in txt.lower() or 'hi zozo' in txt.lower():
-                        return 'zozo'
-                
+                     return 'zozo'  
+zero=0
+def one_time():
+    global zero
+    if zero<1:
+            p = "Ok. Now write whatever you want."
+            print(p)
+            speak(p)
+    zero+=1
+
+
 def listen():
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
         r = sr.Recognizer()
         while True:
             with sr.Microphone() as source:
-                p="Say something!"
+                li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening", "I'm waiting for your input",
+                "What's going on?", "I'm listening", "Any updates?", "How can I help you?", "Any thoughts?"]
+                p=random.choice(li)
                 speak(p)
                 print(p)
                 audio = r.listen(source)
@@ -123,6 +134,7 @@ def listen():
                 p1 = "Sorry, I couldn't understand you. Please try again."
                 print(p1)
     else:
+        one_time()
         text = input("Enter: ")
         return text
 
@@ -144,8 +156,8 @@ mic = input()
 #if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
 #    r = sr.Recognizer()
     
-#else:
-#    pass
+# else:
+#     pass
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
     
@@ -245,7 +257,6 @@ while True:
                 d="couldn't find any results!"
                 print(d)
                 speak(d)
-                continue 
         elif "set alarm" in a or "alarm" in a:
             # ask user for the time of the alarm
             speak("At what time do you want to set the alarm? Say in seconds.")
@@ -284,4 +295,3 @@ while True:
                         #a = listen()
             # except sr.UnknownValueError:
             #     continue
-
