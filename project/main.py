@@ -1,5 +1,5 @@
 '''
-Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
+Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable and your openweathermap API in 'apiKey' local variable in the 'weather' function. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
 Hope you like it ;)
 plus if you don't have microphone or had problem in this part, write "n" or "no" at the beginning!.
 '''
