@@ -17,7 +17,6 @@ import os
 import pygame
 import pyttsx3
 import datetime
-from gtts import gTTS
 from IPython.display import Audio, display
 import time
 from word2number import w2n
