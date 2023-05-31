@@ -24,7 +24,6 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - sklearn
 - pygame 
 - pyttsx3
-- gTTS
 - word2number
 - SpeechRecognition
 - jsonlib-python3
@@ -91,7 +90,6 @@ This project is licensed under the [MIT License](https://opensource.org/license/
 - [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/)- For audio input/output functionality.
 - [pygame](https://www.pygame.org/)- Library for playing music files.
 - [pyttsx3](https://pypi.org/project/pyttsx3/)- Text-to-speech library for speech output.
-- [gTTS](https://gtts.readthedocs.io/en/latest/)- Google Text-to-Speech library for creating audio files from text.
 - [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)- Library for speech recognition functionality.
 - [word2number](https://pypi.org/project/word2number/)- Library for converting words to numbers.
 
