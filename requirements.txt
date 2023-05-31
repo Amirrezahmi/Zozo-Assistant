@@ -4,7 +4,6 @@ nltk
 sklearn
 pygame
 pyttsx3
-gTTS
 word2number
 SpeechRecognition
 jsonlib-python3
