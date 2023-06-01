@@ -22,7 +22,9 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - joblib
 - nltk
 - sklearn
-- pygame 
+- pygame
+- tkinter
+- requests 
 - pyttsx3
 - word2number
 - SpeechRecognition
