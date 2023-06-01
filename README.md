@@ -101,6 +101,7 @@ This project is licensed under the [MIT License](https://opensource.org/license/
 # Credits
 
 - [OpenAI](https://openai.com/)- For providing the chatbot API.
+- [tkinter](https://docs.python.org/3/library/tkinter.html)- For creating the user interface (UI) components.
 - [NLTK ](https://www.nltk.org/)- Natural Language Toolkit for text processing.
 - [scikit-learn](https://scikit-learn.org/)- Machine learning library for building the question-answering model.
 - [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/)- For audio input/output functionality.
