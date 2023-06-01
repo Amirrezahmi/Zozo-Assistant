@@ -67,6 +67,20 @@ Here's an screenshot of some sample examples:
 
 ![uu](https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/78558750-979c-494a-bd6e-a509a09385db)
 
+# Basic and Intuitive User Interface
+
+Zozo Assistant has undergone a transformation from a console-based project to a visually captivating user interface (UI). Although the UI remains basic, it provides a simple and intuitive way for users to interact with the assistant, enhancing their overall experience.
+
+## Key Features:
+
+- Basic and minimalist UI design that focuses on functionality.
+- Easy navigation through the assistant's features.
+- Intuitive controls and straightforward interaction methods.
+- Streamlined functionality for seamless execution of commands.
+
+Despite its basic nature, the UI of Zozo Assistant ensures that users can effortlessly interact with the assistant's capabilities without any unnecessary complexity. The clean and minimalist design allows for a distraction-free experience, enabling users to focus on the assistant's functionality and make the most out of their interactions.
+
+Feel free to modify the text according to your preferences and specific features of your UI.
 
 # Contributing
 
