@@ -10,3 +10,5 @@ jsonlib-python3
 openai
 numpy
 pandas
+tkinter
+requests
