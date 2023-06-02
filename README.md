@@ -84,6 +84,15 @@ Despite its basic nature, the UI of Zozo Assistant ensures that users can effort
 
 Feel free to modify the text according to your preferences and specific features of your UI.
 
+## Example of UI
+
+Here's an example video of the UI of Zozo:
+
+
+https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/826c2a37-2d06-400a-a4dd-e65c762cf521
+
+
+
 # Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
