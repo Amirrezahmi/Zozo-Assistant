@@ -89,7 +89,10 @@ Feel free to modify the text according to your preferences and specific features
 Here's an example video of the UI of Zozo:
 
 
-https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/826c2a37-2d06-400a-a4dd-e65c762cf521
+
+https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/da0c8467-0593-4047-b73a-41df5b2bcbfa
+
+
 
 
 
