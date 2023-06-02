@@ -247,6 +247,7 @@ def jnum():
     global g_num
     g_num+=1
 def get_weather():
+    input_box.pack_forget()
     def stop_weather():
         remove_weather_elements()
         input_box.pack()
