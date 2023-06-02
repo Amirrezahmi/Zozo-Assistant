@@ -27,17 +27,17 @@ d= {'Questions':'how are you','Answers':"i'm fine. how about yourself?"}
 
 e= {'Questions':'how are you doing','Answers':"i'm fine. how about yourself?"}
 
-df = df.append(a,ignore_index=True)
+df = df._append(a,ignore_index=True)
 
 df.columns=['Questions','Answers']
 
-df = df.append([b,c,d,e],ignore_index=True)
+df = df._append([b,c,d,e],ignore_index=True)
 
-df = df.append(c,ignore_index=True)
+df = df._append(c,ignore_index=True)
 
-df = df.append(d,ignore_index=True)
+df = df._append(d,ignore_index=True)
 
-df = df.append(d,ignore_index=True)
+df = df._append(d,ignore_index=True)
 
 #clean function
 def cleaner(x):
@@ -62,3 +62,4 @@ import joblib
 Pipe.fit(df['Questions'], df['Answers'])
 # Save the model
 joblib.dump(Pipe, 'model2.joblib')
+print("Done!\nNow get back to ui.py or main.py")

@@ -1,7 +1,7 @@
 '''
-Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable and your openweathermap API in 'apiKey' local variable in the 'weather' function. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
+Hello everyone.  paste your openai API key in 'OPENAI_API_KEY' variable. If you don't have an API key, signup. However if you don't want to use openai API at all, the program uses the pipeline model which has trained before.
 Hope you like it ;)
-plus if you don't have microphone or had problem in this part, write "n" or "no" at the beginning!.
+plus if you don't have microphone or had problem in this part, you can write 'input()' instead of all functions called 'listen()' in the code.
 '''
 import requests
 from country_codes import country_codes
@@ -27,7 +27,7 @@ import os
 import openai
 import random
 #openai api
-OPENAI_API_KEY = ''    #Paste your API Key here
+OPENAI_API_KEY = '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'    #Paste your API Key here
 messages=[
         {"role": "system", "content": "You are a helpful assistant."},
     ]
@@ -38,7 +38,7 @@ def check_API():
     else:
         return "No"
 def api_not_worked():
-    pipeline = joblib.load('model2.joblib') #Pase your path 
+    pipeline = joblib.load('model2.joblib') #change
     print("API didn't work! Now we are using our pipline model...")
     result = pipeline.predict([a])[0]
     print(result)
@@ -47,7 +47,7 @@ def api_not_worked():
 #weather
 def weather(location, country):
   # Returns full JSON object
-  apiKey = '' # Enter your API Key here for weather
+  apiKey = 'b30305181423db1df9a1e8212c3f0504' # Enter your API Key here for weather
   base = 'http://api.openweathermap.org/data/2.5/weather?q='
   url = base + location + ',' + country + '&units=metric&appid=' + apiKey
   response = requests.get(url).json()
@@ -134,6 +134,7 @@ def cleaner(x):
 
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
+
 w = "Welcome to Zozo Assistant. First thing first, do you have a microphone?"
 speak(w)
 print(w+" (y/n)")
@@ -146,6 +147,8 @@ if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
     
 else:
     pass
+
+
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
         with sr.Microphone() as source:
@@ -211,7 +214,7 @@ while True:
         elif "bye" in a or "goodbye" in a:
             d = "Good bye."
             speak(d)
-            break 
+            exit()
         elif a == "exit":
             d = "Good bye."
             speak(d)
