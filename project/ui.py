@@ -249,6 +249,7 @@ def jnum():
 def get_weather():
     def stop_weather():
         remove_weather_elements()
+        input_box.pack()
         submit_button.pack() 
 
     def get_weather_info():
