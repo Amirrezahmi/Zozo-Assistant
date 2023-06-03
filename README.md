@@ -57,10 +57,10 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
   pip install -r requirements.txt
 ```
 # Usage
-4. Open the `main.py` file and locate the `OPENAI_API_KEY` variable. Paste your OpenAI API key into this variable.
-5. If you don't have a microphone or encounter any issues with the microphone-related functions, you can replace all instances of `listen()` with `input()` in the code.
+4. Open the `main.py` and `ui.py` files and locate the `OPENAI_API_KEY` and `apiKey` variables. Paste your OpenAI API key into `OPENAI_API_KEY` variable, and paste your OpenWeather API key into `apiKey` variable.
+5. If you don't have a microphone or encounter any issues with the microphone-related functions, in the beginning of running `main.py` the program asks you that do you have a microphone or not and you can answer no if you don't. In `ui.py` I haven't implemented a microphone button yet and you should write your input prompt or use buttons, but I'll implement a button for microphone soon!
 6. If `model2.joblib` dosen't work, delete it and run `train.py` again. Because sometimes the model only works on specefic version of Python that has trained before.
-7. Run the `main.py` script to start the Zozo Assistant.
+7. Run the `main.py` script (for console-based) or `ui.py` script (for user interface (UI)) to start the Zozo Assistant.
 8. At the beggining say "Zozo" or "Hey Zozo" to get the Asisstant attention. (If you chossed the microphone option at the begging.)
 9. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
 10. To exit the chatbot, say "bye", "goodbye" or "exit".
