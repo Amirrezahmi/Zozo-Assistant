@@ -12,6 +12,7 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - Date and time: Users can inquire about the current date and time, and Zozo will provide the information.
 - OpenAI integration: Utilize the OpenAI API for advanced language processing (API key required).
 - Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model.
+- Clean and minimalist UI design
 
 # Prerequisites
 
