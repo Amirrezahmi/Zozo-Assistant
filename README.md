@@ -62,7 +62,7 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 6. If `model2.joblib` dosen't work, delete it and run `train.py` again. Because sometimes the model only works on specefic version of Python that has trained before.
 7. Run the `main.py` script (for console-based) or `ui.py` script (for user interface (UI)) to start the Zozo Assistant.
 8. At the beggining say "Zozo" or "Hey Zozo" to get the Asisstant attention. (If you chossed the microphone option at the begging.)
-9. Interact with the chatbot by asking questions, playing music, setting alarms, or requesting the current date and time or any other prompts.
+9. Interact with the chatbot by asking questions, playing music, weather, setting alarms, or requesting the current date and time or any other prompts.
 10. To exit the chatbot, say "bye", "goodbye" or "exit".
 
 # secreenshot
