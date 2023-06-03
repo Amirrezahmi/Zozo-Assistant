@@ -308,6 +308,7 @@ def get_weather():
     submit_button.pack_forget()
 
 def play_music():
+    input_box.pack_forget()
     folder_path = 'music' # Change based on your path
     music_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.mp3')]
 
@@ -347,6 +348,7 @@ def play_music():
         pygame.mixer.music.stop()
         remove_music_buttons()
         update_chatroom("stop", "Stopped")
+        input_box.pack()
         submit_button.pack() 
 
     def remove_music_buttons():
