@@ -1,7 +1,7 @@
 pyaudio
 joblib
 nltk
-sklearn
+scikit-learn
 pygame
 pyttsx3
 word2number
