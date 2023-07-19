@@ -132,7 +132,7 @@ def listen():
 def cleaner(x):
     return [a for a in (''.join([a for a in x if a not in string.punctuation])).lower().split()]
 
-engine = pyttsx3.init() # In this line of code you may face an error if you are using a non-Windows OS. In this case please follow my note in the text below: 👇
+engine = pyttsx3.init() # In this line of code you may face an error if you are using a non-Windows OS. In this case please follow my notes in the comment below: 👇
 '''
 1. First, make sure to install the pyttsx3 library correctly. Incorrect installation could potentially cause such an error. You can do this by running the following command in your terminal:
     pip uninstall pyttsx3
