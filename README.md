@@ -56,6 +56,10 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 ```bash
   pip install -r requirements.txt
 ```
+4. As stated earlier, we are using `pyttsx3` in this program. It is essential to note that this program has been developed on a Windows-powered device, which may result in encountering errors with certain libraries on other operating systems, such as pyttsx3. pyttsx3 uses speech synthesis engines that depend on your operating system. Make sure that the corresponding speech engine is correctly installed and configured. For example, on Linux, pyttsx3 uses espeak. You might need to install it in case you are using Linux:
+```bash
+sudo apt-get update && sudo apt-get install espeak
+```
 ## Usage
 4. Open the `main.py` and `ui.py` files and locate the `OPENAI_API_KEY` and `apiKey` variables. Paste your OpenAI API key into `OPENAI_API_KEY` variable, and paste your OpenWeather API key into `apiKey` variable.
 5. If you don't have a microphone or encounter any issues with the microphone-related functions, in the beginning of running `main.py` the program asks you that do you have a microphone or not and you can answer no if you don't. In `ui.py` I haven't implemented a microphone button yet and you should write your input prompt or use buttons, but I'll implement a button for microphone soon!
