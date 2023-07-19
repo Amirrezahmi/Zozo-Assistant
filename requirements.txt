@@ -11,4 +11,5 @@ openai
 numpy
 pandas
 tkinter
+ipython
 requests
