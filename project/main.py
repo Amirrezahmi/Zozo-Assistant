@@ -117,6 +117,7 @@ def listen():
                 p=random.choice(li)
                 speak(p)
                 print(p)
+                r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
                 audio = r.listen(source)
             try:
                 text = r.recognize_google(audio)
@@ -162,6 +163,7 @@ else:
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
         with sr.Microphone() as source:
+            r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
             audioo= r.listen(source)
             try:
                 txt=r.recognize_google(audioo)
