@@ -16,7 +16,17 @@ import os
 import openai
 from tkinter import scrolledtext
 
-engine = pyttsx3.init()
+engine = pyttsx3.init() # In this line of code you may face an error if you are using a non-Windows OS. In this case please follow my notes in the comment below: 👇
+'''
+1. First, make sure to install the pyttsx3 library correctly. Incorrect installation could potentially cause such an error. You can do this by running the following command in your terminal:
+    pip uninstall pyttsx3
+    pip install pyttsx3
+2. Upgrade the library if it's outdated because some old versions might cause the error. Run the following command to update pyttsx3:
+    pip install --upgrade pyttsx3
+Note: Step 3 is crucial, especially if you are using a non-Windows OS such as Linux. It is essential to note that this program has been developed on a Windows-powered device, which may result in encountering errors with certain libraries on other operating systems, such as pyttsx3. In this case read step 3 carefully.
+3. pyttsx3 uses speech synthesis engines that depend on your operating system. Make sure that the corresponding speech engine is correctly installed and configured. For example, on Linux, pyttsx3 uses espeak. You might need to install it in case you are using Linux:
+    sudo apt-get update && sudo apt-get install espeak
+'''
 engine.setProperty('rate', 150)
 
 # OpenAI API
