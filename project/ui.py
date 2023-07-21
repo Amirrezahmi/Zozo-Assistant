@@ -15,6 +15,94 @@ import joblib
 import os
 import openai
 from tkinter import scrolledtext
+import time
+
+from queue import Queue
+
+# 'message_queue' will be our means of communication between recognition thread and main program thread
+message_queue = Queue()
+pygame.init()
+def play_siri1():
+    pygame.mixer.music.load("siri1.mp3")
+    pygame.mixer.music.play()
+
+def play_siri2():
+    pygame.mixer.music.load("siri2.mp3")
+    pygame.mixer.music.play()
+
+btn_status = False
+
+listening_flag = threading.Event()
+listen_thread = None  # Track the active listen_for_speech thread
+
+def listen_for_speech(queue: Queue):
+    recognizer = sr.Recognizer()
+    microphone = sr.Microphone()
+    global listen_thread
+
+    while True:
+        with microphone as mic:
+            # Wait for the call to start listening
+            queue.get()
+
+            # Check if the loop should run
+            if not listening_flag.is_set():
+                break
+
+            while btn_status:
+                print("Listening...")
+                recognizer.adjust_for_ambient_noise(mic, duration=1)
+                audio = recognizer.listen(mic)
+
+                if not btn_status:  # Stop the loop if the button is clicked
+                    break
+
+                print("Recognizing...")
+                try:
+                    text = recognizer.recognize_google(audio)
+                    # Get the existing text from the input box
+                    existing_text = input_box.get()
+                    # Update the input box with the recognized speech joined with existing text
+                    if existing_text.strip():  # Check if the input box is not empty
+                        input_box.delete(0, tk.END)
+                        input_box.insert(0, existing_text + " " + text)
+                    else:
+                        input_box.insert(tk.END, text)  # Append recognized speech to the end
+                except sr.UnknownValueError:
+                    print("Could not understand")
+                except sr.RequestError:
+                    print("Failed to get results.")
+
+            # Reset the listen_thread when the loop exits
+            listen_thread = None
+            # Stop listening if the button is clicked while waiting for input
+            if not btn_status:
+                listening_button.configure(text='🎙')
+                break
+
+def start_stop_listening():
+    global btn_status, listen_thread
+
+    btn_status = not btn_status
+    if btn_status:
+        listening_button.configure(text='⏹')
+        play_siri1()
+        if listen_thread is None or not listen_thread.is_alive():
+            listening_flag.set()  # Set the flag to True to start the loop
+            recognize_thread = threading.Thread(target=listen_for_speech, args=(message_queue,))
+            recognize_thread.daemon = True
+            recognize_thread.start()
+            listen_thread = recognize_thread
+            message_queue.put('start')
+            print("Button clicked, start listening")
+            #play_siri1()
+    else:
+        listening_button.configure(text='🎙')
+        listening_flag.clear()  # Set the flag to False to stop the loop
+        print("Button clicked, stop listening")
+        play_siri2()
+
+
 
 engine = pyttsx3.init() # In this line of code you may face an error if you are using a non-Windows OS. In this case please follow my notes in the comment below: 👇
 '''
@@ -208,7 +296,7 @@ def on_window_configure(event):
 
 # Create a Tkinter window
 window = tk.Tk()
-window.title("Chatroom")
+window.title("Zozo")
 window.geometry("600x400")
 window.configure(background='#F0F0F0')
 
@@ -262,6 +350,7 @@ def get_weather():
         remove_weather_elements()
         input_box.pack()
         submit_button.pack() 
+        listening_button.pack()
 
     def get_weather_info():
         location = location_entry.get()
@@ -316,6 +405,7 @@ def get_weather():
     submit_butto.pack()
     stop_button.pack()
     submit_button.pack_forget()
+    listening_button.pack_forget()
 
 def play_music():
     input_box.pack_forget()
@@ -360,6 +450,7 @@ def play_music():
         update_chatroom("stop", "Stopped")
         input_box.pack()
         submit_button.pack() 
+        listening_button.pack()
 
     def remove_music_buttons():
         next_button.destroy()
@@ -382,12 +473,17 @@ def play_music():
     unpause_button.pack()
     stop_button.pack()
     submit_button.pack_forget()
+    listening_button.pack_forget()
 
     
 
 def submit_chat():
+    global btn_status
+    btn_status = False  # Stop the speech recognition loop
+
     prompt = input_box.get()
     input_box.delete(0, tk.END)
+    
 
     if "set alarm" in prompt or "alarm" in prompt:
         submit_button.pack_forget()
@@ -441,10 +537,11 @@ def submit_chat():
         get_weather()
         #submit_button.pack()
         return
-
+    
     response = generate_response(prompt)  # Replace with your own code to generate bot response
     update_chatroom(prompt, response)
     submit_button.pack()
+    #listening_button.pack()
     
 
 
@@ -461,6 +558,7 @@ def generate_response(prompt):
 # Create a submit button
 submit_button = tk.Button(window, text="Send", command=submit_chat)
 submit_button.pack()
-
+listening_button = tk.Button(window, text='🎙', command=start_stop_listening)
+listening_button.pack()
 # Run the Tkinter event loop
 window.mainloop()
