@@ -27,7 +27,6 @@ import os
 import openai
 import random
 # Siri activation sound
-pygame.init()
 def play_siri1():
     pygame.mixer.music.load("siri1.mp3")
     pygame.mixer.music.play()
@@ -119,24 +118,29 @@ def one_time():
 
 
 def listen():
-    if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+    pygame.init()
+    if mic.lower() == "1" or mic.lower() == "y" or mic.lower() == "yes":
         r = sr.Recognizer()
+
         while True:
             with sr.Microphone() as source:
-                # li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening"]
-                # p=random.choice(li)
-                # speak(p)
-                # print(p)
-                play_siri1()
-                r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
+                play_siri1()  # Play the prompt sound before listening
+                r.adjust_for_ambient_noise(source, duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing
                 audio = r.listen(source)
-                play_siri2()
+
             try:
                 text = r.recognize_google(audio)
-                return text
+                if "play music" in text.lower():
+                    folder_path = 'music'  # change based on your path
+                    play_music(folder_path)
+                else:
+                    return text
             except sr.UnknownValueError:
+                play_siri2()  # Play the sorry sound when speech is not recognized
                 p1 = "Sorry, I couldn't understand you. Please try again."
+                speak(p1)
                 print(p1)
+
     else:
         one_time()
         text = input("Enter: ")
@@ -172,40 +176,21 @@ else:
     pass
 
 
-while True:
-    if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+def play_music(folder_path):
+    music_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.mp3')]
+    pygame.mixer.init()
+    current_music_index = 0
+    pygame.mixer.music.load(music_files[current_music_index])
+    pygame.mixer.music.play()
+    print('Playing:', music_files[current_music_index])
+
+    while True:
+        print('Enter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
             audioo= r.listen(source)
             try:
-                txt=r.recognize_google(audioo)
-                if 'zozo' in txt.lower() or "hi zozo" in txt.lower():
-                    pass
-                else:
-                    continue
-            except sr.UnknownValueError:
-                continue
-    
-                    
-    while True:
-        a = listen()
-        if "who am I" in a or "what is my name" in a:
-            p = f"You are {name}."
-            speak(p)
-        elif "play music" in a:
-            folder_path = 'music' #change based on ur path
-            music_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.mp3')]
-
-            pygame.mixer.init()
-            current_music_index = 0
-            pygame.mixer.music.load(music_files[current_music_index])
-            pygame.mixer.music.play()
-
-            print('Playing:', music_files[current_music_index])
-
-            while True:
-                print('Enter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
-                b = listen() #If you had problem in this part, you can simply use 'b=input("Enter your choice")' instead of 'b=listen()'.
+                b=r.recognize_google(audioo)
                 if b == 'next' or b == '1' or b == 'one':
                     current_music_index = (current_music_index + 1) % len(music_files)
                     pygame.mixer.music.load(music_files[current_music_index])
@@ -230,6 +215,31 @@ while True:
 
                 else:
                     print('Wrong format! Please try again!')
+                    continue
+            except sr.UnknownValueError:
+                continue
+
+while True:
+    if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+        with sr.Microphone() as source:
+            r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
+            audioo= r.listen(source)
+            try:
+                txt=r.recognize_google(audioo)
+                if 'zozo' in txt.lower() or "hi zozo" in txt.lower() or "start" in txt.lower():
+                    pass
+                else:
+                    continue
+            except sr.UnknownValueError:
+                continue
+    
+                    
+    while True:
+        a = listen()
+        if "who am I" in a or "what is my name" in a:
+            p = f"You are {name}."
+            speak(p)
+
 
         elif "clock" in a or "time" in a or "date" in a:
             now = datetime.datetime.now()
