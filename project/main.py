@@ -26,6 +26,16 @@ import json
 import os
 import openai
 import random
+
+pygame.init()
+def play_siri1():
+    pygame.mixer.music.load("siri1.mp3")
+    pygame.mixer.music.play()
+
+def play_siri2():
+    pygame.mixer.music.load("siri2.mp3")
+    pygame.mixer.music.play()
+
 #openai api
 OPENAI_API_KEY = ''    #Paste your API Key here
 messages=[
@@ -113,12 +123,14 @@ def listen():
         r = sr.Recognizer()
         while True:
             with sr.Microphone() as source:
-                li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening"]
-                p=random.choice(li)
-                speak(p)
-                print(p)
+                # li = ["Say something!", "OK?", "Now what?", "Speak up, I'm listening"]
+                # p=random.choice(li)
+                # speak(p)
+                # print(p)
+                play_siri1()
                 r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
                 audio = r.listen(source)
+                play_siri2()
             try:
                 text = r.recognize_google(audio)
                 return text
