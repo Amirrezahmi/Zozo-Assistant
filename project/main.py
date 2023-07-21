@@ -26,7 +26,7 @@ import json
 import os
 import openai
 import random
-
+# Siri activation sound
 pygame.init()
 def play_siri1():
     pygame.mixer.music.load("siri1.mp3")
