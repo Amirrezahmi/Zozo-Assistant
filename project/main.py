@@ -253,9 +253,9 @@ while True:
             d = "Good bye."
             speak(d)
             exit()
-        elif "hi" in a or "hello" in a: 
-            d = "Hi. How can I help you?"
-            speak(d)
+        #elif "hi" in a or "hello" in a: 
+        #    d = "Hi. How can I help you?"
+        #    speak(d)
         elif "weather" in a:
             d= "Which city you live?"
             print(d)
