@@ -127,6 +127,7 @@ def listen():
                 play_siri1()  # Play the prompt sound before listening
                 r.adjust_for_ambient_noise(source, duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing
                 audio = r.listen(source)
+                play_siri2()
 
             try:
                 text = r.recognize_google(audio)
@@ -136,7 +137,6 @@ def listen():
                 else:
                     return text
             except sr.UnknownValueError:
-                play_siri2()  # Play the sorry sound when speech is not recognized
                 p1 = "Sorry, I couldn't understand you. Please try again."
                 speak(p1)
                 print(p1)
