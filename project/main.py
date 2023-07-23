@@ -167,6 +167,9 @@ def listen():
         reset_code = '\033[0m'
         print(f"{red_code}User: {reset_code}",end="")
         text=input()
+        #Blue
+        blue_code = '\033[94m'
+        print(f"{blue_code}Bot: {reset_code} ", end="")
         return text
 
 def cleaner(x):
