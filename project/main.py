@@ -161,7 +161,12 @@ def listen():
 
     else:
         one_time()
-        text = input("Enter: ")
+        # ANSI escape code for red color
+        red_code = '\033[91m'
+        # ANSI escape code for resetting color to default
+        reset_code = '\033[0m'
+        print(f"{red_code}User: {reset_code}",end="")
+        text=input()
         return text
 
 def cleaner(x):
