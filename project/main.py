@@ -262,9 +262,11 @@ while True:
                     
     while True:
         a = listen()
-        if "who am I" in a or "what is my name" in a:
+        if "who am i" in a or "what is my name" in a:
             p = f"You are {name}."
+            print(p)
             speak(p)
+            
 
 
         elif "clock" in a or "time" in a or "date" in a:
@@ -273,17 +275,19 @@ while True:
             speak("Current date and time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
         elif "bye" in a or "goodbye" in a:
             d = "Good bye."
+            print(d)
             speak(d)
             exit()
         elif a == "exit":
             d = "Good bye."
+            print(d)
             speak(d)
             exit()
         #elif "hi" in a or "hello" in a: 
         #    d = "Hi. How can I help you?"
         #    speak(d)
         elif "weather" in a:
-            d= "Which city you live?"
+            d= "Which city do you live in?"
             print(d)
             speak(d)
             location = listen()
@@ -296,17 +300,18 @@ while True:
 
             else:
                 d = "Country not found in our dataset."
-                speak(d)
                 print(d)
+                speak(d)
                 country=country
             try:
                 desc = description(location, country)
                 d=f"In {location} the weather is {desc}"
-                speak(d)
                 print(d)
+                speak(d)
                 advice = get_weather_advice(desc)
-                speak(advice)
                 print(advice)
+                speak(advice)
+                
 
 
             except:
@@ -323,14 +328,16 @@ while True:
             try:
                 seconds = int(w2n.word_to_num(seconds))
             except ValueError:
+                print("I couldn't understand the number you said. Please try again.")
                 speak("I couldn't understand the number you said. Please try again.")
                 continue
 
             # Set the alarm using a timer
             t = threading.Timer(seconds, alarm)
             t.start()
-            speak(f"Alarm set for {seconds} seconds.")
             print(f"Alarm set for {seconds} seconds.")
+            speak(f"Alarm set for {seconds} seconds.")
+            
 
         else:
             if check_API()!="No":
