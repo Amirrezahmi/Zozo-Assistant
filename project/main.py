@@ -212,38 +212,42 @@ def play_music(folder_path):
 
     while True:
         print('Enter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
-            audioo= r.listen(source)
-            try:
-                b=r.recognize_google(audioo)
-                if b == 'next' or b == '1' or b == 'one':
-                    current_music_index = (current_music_index + 1) % len(music_files)
-                    pygame.mixer.music.load(music_files[current_music_index])
-                    pygame.mixer.music.play()
-                    print('Playing:', music_files[current_music_index])
 
-                elif b == 'previous' or b == '2' or b == 'two':
-                    current_music_index = (current_music_index - 1) % len(music_files)
-                    pygame.mixer.music.load(music_files[current_music_index])
-                    pygame.mixer.music.play()
-                    print('Playing:', music_files[current_music_index])
-
-                elif b == 'unpause' or b == '4' or b == 'four':
-                    pygame.mixer.music.unpause()
-
-                elif b == 'pause' or b == '3' or b == 'three':
-                    pygame.mixer.music.pause()
-
-                elif b == 'break' or b == '5' or b == 'five':
-                    pygame.mixer.music.stop()
-                    break
-
-                else:
-                    print('Wrong format! Please try again!')
+        if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
+            with sr.Microphone() as source:
+                r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
+                audioo= r.listen(source)
+                try:
+                    b=r.recognize_google(audioo)
+                except sr.UnknownValueError:
                     continue
-            except sr.UnknownValueError:
-                continue
+        else:
+            b=input()
+        if b == 'next' or b == '1' or b == 'one':
+            current_music_index = (current_music_index + 1) % len(music_files)
+            pygame.mixer.music.load(music_files[current_music_index])
+            pygame.mixer.music.play()
+            print('Playing:', music_files[current_music_index])
+
+        elif b == 'previous' or b == '2' or b == 'two':
+            current_music_index = (current_music_index - 1) % len(music_files)
+            pygame.mixer.music.load(music_files[current_music_index])
+            pygame.mixer.music.play()
+            print('Playing:', music_files[current_music_index])
+
+        elif b == 'unpause' or b == '4' or b == 'four':
+            pygame.mixer.music.unpause()
+
+        elif b == 'pause' or b == '3' or b == 'three':
+            pygame.mixer.music.pause()
+
+        elif b == 'break' or b == '5' or b == 'five':
+            pygame.mixer.music.stop()
+            break
+
+        else:
+            print('Wrong format! Please try again!')
+            continue
 
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
@@ -266,6 +270,14 @@ while True:
             p = f"You are {name}."
             print(p)
             speak(p)
+
+        elif "play music" in a:
+            if mic.lower()!="1" or mic.lower() !="y" or mic.lower()!="yes":
+                folder_path = 'music'  # change based on your path
+                play_music(folder_path)
+            
+            else:
+                pass
             
 
 
