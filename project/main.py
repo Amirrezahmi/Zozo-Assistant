@@ -101,11 +101,16 @@ def get_weather_advice(description):
 def print_user_text(text):
     # ANSI escape code for red color
     red_code = '\033[91m'
+    # ANSI escape code for blue color
+    blue_code = '\033[94m'
     # ANSI escape code for resetting color to default
     reset_code = '\033[0m'
     
-    # Print the text with "User" in red and the rest in default color
+    # Print the user's text in red
     print(f"{red_code}User:{reset_code} {text}")
+    
+    # Move cursor back to the beginning of the line and print "Bot:" in blue
+    print(f"{blue_code}Bot:{reset_code} ", end="")
 
 
 # A Global variable for your name
