@@ -96,6 +96,18 @@ def get_weather_advice(description):
         return random.choice(snowy_advice)
     else:
         return random.choice(default_advice)
+
+
+def print_user_text(text):
+    # ANSI escape code for red color
+    red_code = '\033[91m'
+    # ANSI escape code for resetting color to default
+    reset_code = '\033[0m'
+    
+    # Print the text with "User" in red and the rest in default color
+    print(f"{red_code}User:{reset_code} {text}")
+
+
 # A Global variable for your name
 name = "Amirreza"
 def speak(text):
@@ -135,6 +147,7 @@ def listen():
                     folder_path = 'music'  # change based on your path
                     play_music(folder_path)
                 else:
+                    print_user_text(text)
                     return text
             except sr.UnknownValueError:
                 p1 = "Sorry, I couldn't understand you. Please try again."
