@@ -11,7 +11,7 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - Alarm: Users can set alarms by specifying the duration in seconds. Zozo will play a sound after the specified time has elapsed.
 - Date and time: Users can inquire about the current date and time, and Zozo will provide the information.
 - OpenAI integration: Utilize the OpenAI API for advanced language processing (API key required).
-- Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model.
+- Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model, which incorporates a decision tree classifier for question-answering tasks.
 - Clean and minimalist UI design
 
 # Prerequisites
