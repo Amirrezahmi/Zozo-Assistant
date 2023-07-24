@@ -170,7 +170,12 @@ def listen():
         #Blue
         blue_code = '\033[94m'
         print(f"{blue_code}Bot: {reset_code} ", end="")
-        return text
+        if "play music" in text.lower():
+            folder_path = 'music'  # change based on your path
+            play_music(folder_path)
+            return "amirerror"
+        else:
+            return text
 
 def cleaner(x):
     return [a for a in (''.join([a for a in x if a not in string.punctuation])).lower().split()]
@@ -271,13 +276,8 @@ while True:
             print(p)
             speak(p)
 
-        elif "play music" in a:
-            if mic.lower()!="1" or mic.lower() !="y" or mic.lower()!="yes":
-                folder_path = 'music'  # change based on your path
-                play_music(folder_path)
-            
-            else:
-                pass
+        elif "amirerror" in a:
+            continue
             
 
 
