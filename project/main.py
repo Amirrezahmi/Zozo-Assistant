@@ -284,7 +284,8 @@ while True:
                     
     while True:
         a = listen()
-        if "who am I" in a or "what is my name" in a or "who am I" in a:
+        mic.lower()
+        if "who am i" in a.lower() or "what is my name" in a:
             p = f"You are {name}."
             print(p)
             speak(p)
