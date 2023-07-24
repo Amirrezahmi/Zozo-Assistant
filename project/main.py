@@ -224,11 +224,11 @@ def play_music(folder_path):
                 r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
                 audioo= r.listen(source)
                 try:
-                    print_user_text_or_bot("user")
                     b=r.recognize_google(audioo)
-                    print(b)
                 except sr.UnknownValueError:
                     continue
+                print_user_text_or_bot("user")
+                print(b)
         else:
             print_user_text_or_bot("user")
             b=input()
