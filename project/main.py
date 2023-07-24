@@ -294,7 +294,7 @@ while True:
             
 
 
-        elif "what time is it" in a or "date" in a:
+        elif "what time is it" in a or "date" in a or a=="time":
             now = datetime.datetime.now()
             print("Current date and time: ", now.strftime("%Y-%m-%d %H:%M:%S"))
             speak("Current date and time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
