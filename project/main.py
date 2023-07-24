@@ -284,7 +284,7 @@ while True:
                     
     while True:
         a = listen()
-        if "who am i" in a or "what is my name" in a:
+        if "who am I" in a or "what is my name" in a or "who am I" in a:
             p = f"You are {name}."
             print(p)
             speak(p)
@@ -294,7 +294,7 @@ while True:
             
 
 
-        elif "clock" in a or "time" in a or "date" in a:
+        elif "what time is it" in a or "date" in a:
             now = datetime.datetime.now()
             print("Current date and time: ", now.strftime("%Y-%m-%d %H:%M:%S"))
             speak("Current date and time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
