@@ -215,7 +215,7 @@ def play_music(folder_path):
     pygame.mixer.music.load(music_files[current_music_index])
     pygame.mixer.music.play()
     print('Playing:', music_files[current_music_index])
-    print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
+    print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. stop\n')
 
     while True:
 
@@ -256,7 +256,7 @@ def play_music(folder_path):
             print("Music paused")
             pygame.mixer.music.pause()
 
-        elif b == 'break' or b == '5' or b == 'five':
+        elif b == 'stop' or b == '5' or b == 'five':
             print_user_text_or_bot("bot")
             print("Broke from the music loop")
             pygame.mixer.music.stop()
@@ -266,7 +266,7 @@ def play_music(folder_path):
             print_user_text_or_bot("bot")
             print('Wrong format! Please try again!')
             continue
-        print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
+        print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. stop\n')
 
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
