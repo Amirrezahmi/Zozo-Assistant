@@ -98,19 +98,19 @@ def get_weather_advice(description):
         return random.choice(default_advice)
 
 
-def print_user_text(text):
-    # ANSI escape code for red color
-    red_code = '\033[91m'
-    # ANSI escape code for blue color
-    blue_code = '\033[94m'
+def print_user_text_or_bot(role):
     # ANSI escape code for resetting color to default
     reset_code = '\033[0m'
-    
-    # Print the user's text in red
-    print(f"{red_code}User:{reset_code} {text}")
-    
-    # Move cursor back to the beginning of the line and print "Bot:" in blue
-    print(f"{blue_code}Bot:{reset_code} ", end="")
+    if role=="user":
+        # ANSI escape code for red color
+        red_code = '\033[91m'
+        
+        # Print the user's text in red
+        print(f"{red_code}User: {reset_code}", end="")
+    else:
+        # ANSI escape code for blue color
+        blue_code = '\033[94m'
+        print(f"{blue_code}Bot:{reset_code} ", end="")
 
 
 # A Global variable for your name
@@ -141,6 +141,7 @@ def listen():
 
         while True:
             with sr.Microphone() as source:
+                print_user_text_or_bot("user")
                 play_siri1()  # Play the prompt sound before listening
                 r.adjust_for_ambient_noise(source, duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing
                 audio = r.listen(source)
@@ -152,7 +153,8 @@ def listen():
                     folder_path = 'music'  # change based on your path
                     play_music(folder_path)
                 else:
-                    print_user_text(text)
+                    print(text)
+                    print_user_text_or_bot("bot")
                     return text
             except sr.UnknownValueError:
                 p1 = "Sorry, I couldn't understand you. Please try again."
@@ -161,15 +163,9 @@ def listen():
 
     else:
         one_time()
-        # ANSI escape code for red color
-        red_code = '\033[91m'
-        # ANSI escape code for resetting color to default
-        reset_code = '\033[0m'
-        print(f"{red_code}User: {reset_code}",end="")
+        print_user_text_or_bot("user")
         text=input()
-        #Blue
-        blue_code = '\033[94m'
-        print(f"{blue_code}Bot: {reset_code} ", end="")
+        print_user_text_or_bot("bot")
         if "play music" in text.lower():
             folder_path = 'music'  # change based on your path
             play_music(folder_path)
