@@ -150,6 +150,8 @@ def listen():
             try:
                 text = r.recognize_google(audio)
                 if "play music" in text.lower():
+                    print(text)
+                    print_user_text_or_bot("bot")
                     folder_path = 'music'  # change based on your path
                     play_music(folder_path)
                 else:
@@ -222,34 +224,46 @@ def play_music(folder_path):
                 r.adjust_for_ambient_noise(source,duration=1) # Function call to adjust audio for ambient noise, enhancing accuracy of subsequent audio processing.
                 audioo= r.listen(source)
                 try:
+                    print_user_text_or_bot("user")
                     b=r.recognize_google(audioo)
+                    print(b)
                 except sr.UnknownValueError:
                     continue
         else:
+            print_user_text_or_bot("user")
             b=input()
         if b == 'next' or b == '1' or b == 'one':
             current_music_index = (current_music_index + 1) % len(music_files)
             pygame.mixer.music.load(music_files[current_music_index])
             pygame.mixer.music.play()
+            print_user_text_or_bot("bot")
             print('Playing:', music_files[current_music_index])
 
         elif b == 'previous' or b == '2' or b == 'two':
             current_music_index = (current_music_index - 1) % len(music_files)
             pygame.mixer.music.load(music_files[current_music_index])
             pygame.mixer.music.play()
+            print_user_text_or_bot("bot")
             print('Playing:', music_files[current_music_index])
 
         elif b == 'unpause' or b == '4' or b == 'four':
+            print_user_text_or_bot("bot")
+            print("Music unpaused")
             pygame.mixer.music.unpause()
 
         elif b == 'pause' or b == '3' or b == 'three':
+            print_user_text_or_bot("bot")
+            print("Music paused")
             pygame.mixer.music.pause()
 
         elif b == 'break' or b == '5' or b == 'five':
+            print_user_text_or_bot("bot")
+            print("Broke from the music loop")
             pygame.mixer.music.stop()
             break
 
         else:
+            print_user_text_or_bot("bot")
             print('Wrong format! Please try again!')
             continue
 
