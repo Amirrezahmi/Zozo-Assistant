@@ -157,9 +157,12 @@ def listen():
                     print_user_text_or_bot("bot")
                     return text
             except sr.UnknownValueError:
+                print()
+                print_user_text_or_bot("bot")
                 p1 = "Sorry, I couldn't understand you. Please try again."
-                speak(p1)
                 print(p1)
+                speak(p1)
+                
 
     else:
         one_time()
