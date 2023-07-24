@@ -215,9 +215,9 @@ def play_music(folder_path):
     pygame.mixer.music.load(music_files[current_music_index])
     pygame.mixer.music.play()
     print('Playing:', music_files[current_music_index])
+    print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
 
     while True:
-        print('Enter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
 
         if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
             with sr.Microphone() as source:
@@ -266,6 +266,7 @@ def play_music(folder_path):
             print_user_text_or_bot("bot")
             print('Wrong format! Please try again!')
             continue
+        print('\nEnter:\n1. next\n2. previous\n3. pause\n4. unpause\n5. break\n')
 
 while True:
     if mic.lower()=="1" or mic.lower() =="y" or mic.lower()=="yes":
