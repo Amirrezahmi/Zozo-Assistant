@@ -1,6 +1,8 @@
 '''
 Add whatever you wish to be answered by the bot in the 'datamain.txt'.
 '''
+# If you encounter `LookupError`, it is because you need to download wordnet. To do this, uncomment lines 16 and 17 and comment these two lines again after execution.
+
 
 import numpy as np 
 import string
@@ -11,6 +13,8 @@ from sklearn.svm import LinearSVC
 from sklearn.feature_extraction.text import TfidfTransformer,TfidfVectorizer
 from sklearn.pipeline import Pipeline
 from nltk.stem import WordNetLemmatizer 
+#import nltk
+#nltk.download('wordnet')
 
 #df = pd.read_csv('data.txt',sep='\t',error_bad_lines=False)
 df = pd.read_csv('datamain.txt',sep='\t')
