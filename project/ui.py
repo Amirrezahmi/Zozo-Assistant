@@ -240,7 +240,8 @@ def listen():
 def assistant_text(text):
     return input_box.get()
 def aa(text):
-    if "time" in text or "clock" in text:
+    text=text.lower()
+    if "what time is it" in text or text=="time":
         time = datetime.datetime.now().strftime("%H:%M")
         p = "The current time is " + time
         return p
@@ -248,7 +249,7 @@ def aa(text):
         date = datetime.datetime.now().strftime("%Y-%m-%d")
         p = "The current date is " + date
         return p
-    elif "bye" in text.lower():
+    elif "bye" in text:
         p="Good Bye!"
         update_chatroom(text, p)
         exit()
