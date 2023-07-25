@@ -232,31 +232,31 @@ def play_music(folder_path):
         else:
             print_user_text_or_bot("user")
             b=input()
-        if b == 'next' or b == '1' or b == 'one':
+        if 'next' in b or '1' in b or 'one' in b:
             current_music_index = (current_music_index + 1) % len(music_files)
             pygame.mixer.music.load(music_files[current_music_index])
             pygame.mixer.music.play()
             print_user_text_or_bot("bot")
             print('Playing:', music_files[current_music_index])
 
-        elif b == 'previous' or b == '2' or b == 'two':
+        elif 'previous' in b or '2' in b or 'two' in b:
             current_music_index = (current_music_index - 1) % len(music_files)
             pygame.mixer.music.load(music_files[current_music_index])
             pygame.mixer.music.play()
             print_user_text_or_bot("bot")
             print('Playing:', music_files[current_music_index])
 
-        elif b == 'unpause' or b == '4' or b == 'four':
+        elif 'unpause' in b or '4' in b or 'four' in b:
             print_user_text_or_bot("bot")
             print("Music unpaused")
             pygame.mixer.music.unpause()
 
-        elif b == 'pause' or b == '3' or b == 'three':
+        elif 'pause' in b or '3' in b or 'three' in b:
             print_user_text_or_bot("bot")
             print("Music paused")
             pygame.mixer.music.pause()
 
-        elif b == 'stop' or b == '5' or b == 'five':
+        elif 'stop' in b or '5' in b or 'five' in b:
             print_user_text_or_bot("bot")
             print("Broke from the music loop")
             pygame.mixer.music.stop()
