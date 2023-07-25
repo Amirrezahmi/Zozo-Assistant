@@ -1,7 +1,7 @@
 
 # Zozo Assistant
 
-Zozo Assistant is a Python-based voice-controlled assistant that uses natural language processing to answer questions and perform various tasks. But also you can use it if you don't have a microphone. The assistant can provide answers to pre-defined questions, play music, say weather, set alarms, tell the time and date, and engage in general conversation. It utilizes the OpenAI API for advanced language processing, but also includes a fallback pipeline model if the API is not available. The code in `train.py`, trains a chatbot using a decision tree classifier. It reads a dataset from a file named `datamain.txt`, which contains a collection of questions and corresponding answers. The chatbot learns from this dataset and creates a pipeline model using the `CountVectorizer`, `TfidfTransformer`, and `DecisionTreeClassifier` from scikit-learn. The model is then saved as `model2.joblib` for future use, when the API is not avaiable.
+Zozo Assistant is a Python-based voice-controlled assistant that uses natural language processing to answer questions and perform various tasks. But also you can use it if you don't have a microphone. The assistant can provide answers to pre-defined questions, play music, say weather, set alarms, tell the time and date, and engage in general conversation. This application leverages the OpenAI API for sophisticated language processing, but also includes a fallback pipeline model for situations where the API is not accessible. The code in `train.py` trains a chatbot using a Linear Support Vector Machine (SVM) classifier. It reads a dataset from a file named `datamain.txt`, which contains a collection of questions and corresponding answers. The chatbot learns from this dataset and creates a pipeline model using the `CountVectorizer`, `TfidfTransformer`, and `LinearSVC` from scikit-learn. The text data is preprocessed using a custom function that removes punctuation, converts text to lowercase, and applies lemmatization to reduce words to their base or root form. This preprocessing step helps to improve the model's ability to understand and respond to a variety of inputs. Once trained, the model is saved as `model2.joblib` for future use when the API is not available.
 
 # Features
 - Speech recognition: Zozo can listen to user input through a microphone and convert it into text using the SpeechRecognition library.
@@ -11,7 +11,7 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 - Alarm: Users can set alarms by specifying the duration in seconds. Zozo will play a sound after the specified time has elapsed.
 - Date and time: Users can inquire about the current date and time, and Zozo will provide the information.
 - OpenAI integration: Utilize the OpenAI API for advanced language processing (API key required).
-- Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model, which incorporates a decision tree classifier for question-answering tasks.
+- Fallback pipeline model: If the OpenAI API is unavailable, the assistant falls back to a pre-trained pipeline model.
 - Clean and minimalist UI design
 
 # Prerequisites
