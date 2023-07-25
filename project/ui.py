@@ -245,6 +245,9 @@ def aa(text):
         time = datetime.datetime.now().strftime("%H:%M")
         p = "The current time is " + time
         return p
+    elif "who am i" in text or "what is my name" in text:
+        p = f"You are {name}."
+        return p
     elif "date" in text:
         date = datetime.datetime.now().strftime("%Y-%m-%d")
         p = "The current date is " + date
