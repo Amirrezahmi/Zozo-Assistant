@@ -1,14 +1,16 @@
 '''
 Add whatever you wish to be answered by the bot in the 'datamain.txt'.
 '''
+
 import numpy as np 
 import string
 from nltk.corpus import stopwords
 import pandas as pd 
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import LinearSVC
 from sklearn.feature_extraction.text import TfidfTransformer,TfidfVectorizer
 from sklearn.pipeline import Pipeline
+from nltk.stem import WordNetLemmatizer 
 
 #df = pd.read_csv('data.txt',sep='\t',error_bad_lines=False)
 df = pd.read_csv('datamain.txt',sep='\t')
@@ -40,8 +42,10 @@ df = df._append(d,ignore_index=True)
 df = df._append(d,ignore_index=True)
 
 #clean function
+lemmatizer = WordNetLemmatizer() 
 def cleaner(x):
-    return [a for a in (''.join([a for a in x if a not in string.punctuation])).lower().split()]
+    words = (''.join([a for a in x if a not in string.punctuation])).lower().split()
+    return [lemmatizer.lemmatize(word) for word in words]
 
 print(df.isnull().sum())
 #remove isnull 
@@ -51,7 +55,7 @@ df.dropna(inplace=True)
 Pipe = Pipeline([
     ('bow',CountVectorizer(analyzer=cleaner)),
     ('tfidf',TfidfTransformer()),
-    ('classifier',DecisionTreeClassifier())
+    ('classifier',LinearSVC())
 ])
 
 Pipe.fit(df['Questions'],df['Answers'])
