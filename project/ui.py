@@ -491,6 +491,7 @@ def submit_chat():
 
     if "set alarm" in prompt or "alarm" in prompt:
         submit_button.pack_forget()
+        listening_button.pack_forget()
         # Ask the user for the time of the alarm
         p = "At what time do you want to set the alarm? Enter the time in seconds."
         update_chatroom(prompt, p)
@@ -523,6 +524,7 @@ def submit_chat():
             # Remove the Capture Time button
             capture_button.pack_forget()
             submit_button.pack()
+            listening_button.pack()
 
 
         # Create a new button to capture the alarm time
