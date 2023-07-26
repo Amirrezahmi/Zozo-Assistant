@@ -81,6 +81,7 @@ def listen_for_speech(queue: Queue):
                 break
 
 def start_stop_listening():
+    submit_button.pack_forget()
     global btn_status, listen_thread
 
     btn_status = not btn_status
@@ -97,6 +98,9 @@ def start_stop_listening():
             print("Button clicked, start listening")
             #play_siri1()
     else:
+        listening_button.pack_forget()
+        submit_button.pack()
+        listening_button.pack()
         listening_button.configure(text='🎙')
         listening_flag.clear()  # Set the flag to False to stop the loop
         print("Button clicked, stop listening")
