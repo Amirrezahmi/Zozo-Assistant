@@ -77,7 +77,6 @@ def listen_for_speech(queue: Queue):
             listen_thread = None
             # Stop listening if the button is clicked while waiting for input
             if not btn_status:
-                listening_button.configure(text='🎙')
                 break
 
 def start_stop_listening():
