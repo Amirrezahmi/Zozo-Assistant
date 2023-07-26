@@ -3,7 +3,7 @@
 
 Zozo Assistant is a Python-based voice-controlled assistant that uses natural language processing to answer questions and perform various tasks. But also you can use it if you don't have a microphone. The assistant can provide answers to pre-defined questions, play music, say weather, set alarms, tell the time and date, and engage in general conversation. This application leverages the OpenAI API for sophisticated language processing, but also includes a fallback pipeline model for situations where the API is not accessible. The code in `train.py` trains a chatbot using a Linear Support Vector Machine (SVM) classifier. It reads a dataset from a file named `datamain.txt`, which contains a collection of questions and corresponding answers. The chatbot learns from this dataset and creates a pipeline model using the `CountVectorizer`, `TfidfTransformer`, and `LinearSVC` from scikit-learn. The text data is preprocessed using a custom function that removes punctuation, converts text to lowercase, and applies lemmatization to reduce words to their base or root form. This preprocessing step helps to improve the model's ability to understand and respond to a variety of inputs. Once trained, the model is saved as `model2.joblib` for future use when the API is not available.
 
-# Features
+## Features
 - Speech recognition: Zozo can listen to user input through a microphone and convert it into text using the SpeechRecognition library.
 - Text-to-speech: Zozo can respond to users by converting text into speech using the pyttsx3 library.
 - Weather: Users can ask for the current weather information for a location, and Zozo will provide the information.
@@ -36,7 +36,7 @@ Zozo Assistant is a Python-based voice-controlled assistant that uses natural la
 # Getting Started
       
 
-## Installation
+# Installation
 
 1. Clone the repository:
 
@@ -69,10 +69,6 @@ sudo apt-get update && sudo apt-get install espeak
 10. Interact with the chatbot by asking questions, playing music, weather, setting alarms, or requesting the current date and time or any other prompts.
 11. To exit the chatbot, say "bye", "goodbye" or "exit".
 
-# secreenshot
-Here's an screenshot of some sample examples:
-
-![uu](https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/78558750-979c-494a-bd6e-a509a09385db)
 
 # Basic and Intuitive User Interface
 
@@ -89,13 +85,49 @@ Despite its basic nature, the UI of Zozo Assistant ensures that users can effort
 
 Feel free to modify the text according to your preferences and specific features of your UI.
 
-## Example of UI
+# Examples
 
-Here's an example video of the UI of Zozo:
+This section includes hands-on, practical examples demonstrating how to interact with the Zozo-Assistant. Here, you will find examples for both console-based and GUI-based interactions.
+
+## Console-based Interactions
+
+Uncover different scenarios for interacting with the Zozo-Assistant using the console. This section delves into specific situations, portraying what happens when the microphone is accessible and when it isn't.
+
+### Scenario: Microphone Inaccessible
+
+This part describes the interaction flow when the user does not grant microphone access. After the initial question from the program about microphone accessibility, if the user responds with "no", the subsequent interaction process unfolds as follows:
+
+<div align="center">
+  <img src="https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/3c3f191c-7e97-4a72-b096-02388e8ea685" width="800" />
+</div>
+
+
+### Scenario: Microphone Accessible
+
+A video demonstration showcasing what happens when the user provides microphone access — that is, when the microphone accessibility question is answered with a "yes". This video depicts how the program responds and guides on the subsequent steps the user needs to take.
 
 
 
-https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/da0c8467-0593-4047-b73a-41df5b2bcbfa
+
+
+https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/5902b33c-ff2b-42a2-babe-e8729c89fc21
+
+
+
+
+
+## GUI Interactions
+
+This section contains a visual guide on how to navigate and interact with the Zozo-Assistant using the graphical user interface (GUI).
+
+
+
+
+
+
+https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/4f21aac2-1aa5-47c4-926c-509743b6e8a2
+
+
 
 
 
