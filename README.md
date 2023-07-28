@@ -95,7 +95,7 @@ Uncover different scenarios for interacting with the Zozo-Assistant using the co
 
 ### Scenario: Microphone Inaccessible
 
-This part describes the interaction flow when the user does not grant microphone access. After the initial question from the program about microphone accessibility, if the user responds with "no", the subsequent interaction process unfolds as follows:
+This part describes the interaction flow when the user does not grant microphone access. After the initial question from the program about microphone accessibility, if the user responds with "no", the subsequent interaction process unfolds as demonstrated in the screenshot below:
 
 <div align="center">
   <img src="https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/3c3f191c-7e97-4a72-b096-02388e8ea685" width="800" />
