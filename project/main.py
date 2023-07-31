@@ -301,7 +301,8 @@ while True:
             print("Current date and time: ", now.strftime("%Y-%m-%d %H:%M:%S"))
             speak("Current date and time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
         elif a=="zozo":
-            p="yes?"
+            p=["yes?","I'm listening", f"{name}?"]
+            p= random.choice(p)
             print(p)
             speak(p)
         elif "bye" in a or "goodbye" in a:
