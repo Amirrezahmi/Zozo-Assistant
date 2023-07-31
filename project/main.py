@@ -300,6 +300,10 @@ while True:
             now = datetime.datetime.now()
             print("Current date and time: ", now.strftime("%Y-%m-%d %H:%M:%S"))
             speak("Current date and time: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+        elif a=="zozo":
+            p="yes?"
+            print(p)
+            speak(p)
         elif "bye" in a or "goodbye" in a:
             d = "Good bye."
             print(d)
