@@ -38,7 +38,7 @@ def play_siri2():
 #openai api
 OPENAI_API_KEY = ''    #Paste your API Key here
 messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are a helpful assistant. your name is Zozo."},
     ]
 #check for API
 def check_API():
