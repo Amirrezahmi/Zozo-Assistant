@@ -251,6 +251,10 @@ def aa(text):
     elif "who am i" in text or "what is my name" in text:
         p = f"You are {name}."
         return p
+    elif text == "zozo":
+        p=["yes?","I'm listening", f"{name}?"]
+        p= random.choice(p)
+        return p
     elif "date" in text:
         date = datetime.datetime.now().strftime("%Y-%m-%d")
         p = "The current date is " + date
