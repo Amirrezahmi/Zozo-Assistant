@@ -1,6 +1,7 @@
 #This is the same as 'main.py' but this time not console-based but UI.
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import messagebox, scrolledtext, ttk, filedialog
 import requests
 import string
 import random
@@ -16,7 +17,7 @@ import os
 import openai
 from tkinter import scrolledtext
 import time
-
+import shutil
 from queue import Queue
 
 # 'message_queue' will be our means of communication between recognition thread and main program thread
@@ -418,7 +419,108 @@ def get_weather():
     submit_button.pack_forget()
     listening_button.pack_forget()
 
+
+# Global variable to store music files
+music_files = []
+
+def music_management():
+    global music_files # Access the global music_files variable
+    def remove_music_management_elements():
+        music_management_window.destroy()
+
+    def delete_music():
+        index = music_list.curselection()[0]
+        music_file = music_files[index]
+        result = messagebox.askyesno("Confirm Deletion", f"Do you really want to delete '{os.path.basename(music_file)}'?")
+        if result:
+            os.remove(music_file)
+            music_list.delete(index)
+            del music_files[index]
+
+    def add_music():
+        filename = filedialog.askopenfilename(initialdir="/", title="Select Music File", filetypes=[("MP3 files", "*.mp3")])
+        if filename:
+            if filename.endswith(".mp3"):
+                shutil.copy(filename, "music/")
+                music_files.append(filename)
+                show_music_list()
+            else:
+                messagebox.showerror("Error", "Please select an MP3 file.")
+        
+    def show_music_list():
+        music_list.delete(0, tk.END)
+        for i, music_file in enumerate(music_files):
+            music_list.insert(tk.END, os.path.basename(music_file))
+
+    music_files = [os.path.join("music", f) for f in os.listdir("music") if f.endswith(".mp3")]
+
+    # Create a new window for music management
+    music_management_window = tk.Toplevel(window)
+    music_management_window.title("Music Management")
+    music_management_window.geometry("400x500")
+
+    # music_management_window.grid_rowconfigure(0, weight=1)
+    # music_management_window.grid_columnconfigure(0, weight=1)
+
+    # Create a label for the title
+    title_label = tk.Label(music_management_window, text="Music Management", font=("Arial", 16, "bold"))
+    title_label.grid(row=0, column=0, pady=10, sticky="n")
+
+    # Create a custom Listbox widget with canvas feature to display the music list
+    class CustomListbox(tk.Listbox):
+        def init(self, master, **kwargs):
+            super().init(master, **kwargs)
+            self.bind("<MouseWheel>", self.hide_delete_icon)
+
+        def show_delete_icon(self, event):
+            index = self.nearest(event.y)
+            x, y, _, _ = self.bbox(index)
+            width = self.winfo_width()
+            self.delete_icon.place(x=width - 30, y=y)  # Move the '❌' icon to the right corner of the row
+
+        def hide_delete_icon(self, event):
+            self.delete_icon.place_forget()
+
+    music_list = CustomListbox(music_management_window, font=("Arial", 12), height=10, selectbackground="#b2d8b2", selectforeground="black", activestyle="none")
+    music_list.grid(row=1, column=0, pady=10, sticky="nsew")
+
+    for i, music_file in enumerate(music_files):
+        music_list.insert(tk.END, os.path.basename(music_file))
+
+    def show_delete_icon(event):
+        index = music_list.nearest(event.y)
+        x, y, _, _ = music_list.bbox(index)
+        width = music_list.winfo_width()
+        music_list.delete_icon.place(x=width - 30, y=y)  # Move the '❌' icon to the right corner of the row
+
+    # Create a delete icon label
+    music_list.delete_icon = tk.Label(music_list, text="❌", cursor="hand2", font=("Arial", 12))
+    music_list.delete_icon.bind("<Button-1>", lambda event: delete_music())
+
+    # Bind the Listbox to show the delete icon on selection
+    music_list.bind("<Button-1>", show_delete_icon)
+
+    # Create a Scrollbar for the Listbox
+    scrollbar = ttk.Scrollbar(music_management_window, orient=tk.VERTICAL, command=music_list.yview)
+    scrollbar.grid(row=1, column=1, sticky="ns")
+    music_list.config(yscrollcommand=scrollbar.set)
+
+    # Create a button to add music
+    add_music_button = tk.Button(music_management_window, text="Add Music", command=add_music)
+    add_music_button.grid(row=2, column=0, pady=10, sticky="n")
+
+    # Create a back button to go back to the music player
+    back_button = tk.Button(music_management_window, text="Back", command=remove_music_management_elements)
+    back_button.grid(row=3, column=0, pady=10, sticky="n")
+    # Configure resizing behavior for widgets
+    music_management_window.grid_rowconfigure(1, weight=1)
+    music_list.grid_rowconfigure(0, weight=1)
+    music_list.grid_columnconfigure(0, weight=1)
+    music_management_window.grid_columnconfigure(0, weight=1)
+
+
 def play_music():
+    global music_files # Access the global music_files variable
     input_box.pack_forget()
     folder_path = 'music' # Change based on your path
     music_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.mp3')]
@@ -460,7 +562,7 @@ def play_music():
         remove_music_buttons()
         update_chatroom("stop", "Stopped")
         input_box.pack()
-        submit_button.pack() 
+        submit_button.pack()
         listening_button.pack()
 
     def remove_music_buttons():
@@ -469,6 +571,9 @@ def play_music():
         pause_button.destroy()
         unpause_button.destroy()
         stop_button.destroy()
+        music_management_button.destroy()  # New button to manage music
+
+
 
     # Create buttons
     next_button = tk.Button(window, text="Next", command=play_next)
@@ -476,6 +581,7 @@ def play_music():
     pause_button = tk.Button(window, text="Pause", command=pause_music)
     unpause_button = tk.Button(window, text="Unpause", command=unpause_music)
     stop_button = tk.Button(window, text="Stop", command=stop_music)
+    music_management_button = tk.Button(window, text="Music Management", command=music_management)  # New button
 
     # Pack buttons
     next_button.pack()
@@ -483,8 +589,12 @@ def play_music():
     pause_button.pack()
     unpause_button.pack()
     stop_button.pack()
+    music_management_button.pack()  # New button
+
     submit_button.pack_forget()
     listening_button.pack_forget()
+
+
 
     
 
