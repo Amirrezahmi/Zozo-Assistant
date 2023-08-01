@@ -121,11 +121,14 @@ https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/5902b33c-ff2b-42a2
 This section contains a visual guide on how to navigate and interact with the Zozo-Assistant using the graphical user interface (GUI).
 
 
+In the `ui.py`, I will apply minor changes to make it more beautiful, which may not be in this video because this is just a software test.
 
 
 
 
-https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/4f21aac2-1aa5-47c4-926c-509743b6e8a2
+
+
+https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/b9740444-d691-422f-977f-02b1a6c058f1
 
 
 
