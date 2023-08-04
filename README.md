@@ -133,7 +133,7 @@ https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/b9740444-d691-422f
 
 
 
-
+## Hardware (Raspberry pi)
 
 
 # Contributing
