@@ -133,7 +133,7 @@ https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/b9740444-d691-422f
 
 
 
-## Implementation on Raspberry Pi
+# Implementation on Raspberry Pi
 
 In this section, we will discuss the process of implementing the Zozo-Assistant project on a Raspberry Pi. Raspberry Pi is a small, affordable single-board computer that provides the necessary processing power for running our program. We chose to use the Raspberry Pi Model 4 with 8 GB RAM for this implementation.
 
@@ -142,7 +142,7 @@ In this section, we will discuss the process of implementing the Zozo-Assistant 
 </div>
 
 
-### Installation
+## Installation
 
 To install the operating system on the Raspberry Pi, follow these steps:
 
@@ -153,14 +153,32 @@ To install the operating system on the Raspberry Pi, follow these steps:
 
 Instead of using an HDMI cable, we used a LAN cable to connect the Raspberry Pi to the modem. We obtained the IP address using the PuTTy program and connected to it using the RealVNC viewer program.
 
-### Setup
+## Setup
 When the Raspberry Pi boots up, follow these steps for the initial setup:
 
    1. Configure the date, language, network, and other settings as required.
    2. Update the operating system to get the latest updates and benefits from the facilities. Use the command line with appropriate commands to perform the system update.
 
 
-### Running the Program
+## Installing pip and libraries
+To install pip and easily install libraries with pip in the terminal on Raspberry Pi, follow these steps:
+
+   1. Open a terminal on your Raspberry Pi.
+   2. Update the package list by running the following command:
+```bash
+sudo apt-get update
+```
+   3. Install the `python3-pip` package, which provides the pip command for Python 3, by running the following command:
+```bash
+sudo apt-get install python3-pip
+```
+   4. Once the installation is complete, you can use the pip command to install libraries. For example, to install a library named `library-name`, run the following command:
+```bash
+pip install library-name
+```
+Replace `library-name` with the actual name of the library you want to install.
+
+## Running the Program
 
 To run the Zozo-Assistant program on the Raspberry Pi, follow these steps:
 
@@ -181,7 +199,7 @@ To run the Zozo-Assistant program on the Raspberry Pi, follow these steps:
 
 This command will run the Zozo-Assistant program and display the result.
 
-### Testing and Debugging
+## Testing and Debugging
 
 Before running the program on the Raspberry Pi, it's recommended to test and debug it in a Linux environment. Ensure that Python is installed on the board, and adjust the code if any compatibility issues arise. In our case, we encountered problems due to the difference in Python versions between our development environment (Windows) and Raspberry Pi (Linux). We had to manually downgrade our code and fix the created bugs one by one to make it work.
 
