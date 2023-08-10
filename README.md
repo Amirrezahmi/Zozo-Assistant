@@ -135,13 +135,18 @@ https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/b9740444-d691-422f
 
 ## Implementation on Raspberry Pi
 
-In this subsection, we will discuss the process of implementing the Zozo-Assistant project on a Raspberry Pi. Raspberry Pi is a small, affordable single-board computer that provides the necessary processing power for running our program. We chose to use the Raspberry Pi Model 4 with 8 GB RAM for this implementation.
+In this section, we will discuss the process of implementing the Zozo-Assistant project on a Raspberry Pi. Raspberry Pi is a small, affordable single-board computer that provides the necessary processing power for running our program. We chose to use the Raspberry Pi Model 4 with 8 GB RAM for this implementation.
+
+<div align="center">
+  <img src="https://github.com/Amirrezahmi/Zozo-Assistant/assets/89692207/c5619967-5c60-461f-9270-cc483ee94fee" width="600" />
+</div>
+
 
 ### Installation
 
 To install the operating system on the Raspberry Pi, follow these steps:
 
-   1. Download the desired operating system image for Raspberry Pi 4, such as Raspbian (now called Raspberry Pi OS), Ubuntu, or OSMC.
+   1. Download the desired operating system image for Raspberry Pi 4, such as Raspbian (now called [Raspberry Pi OS](https://www.raspberrypi.com/software/)), Ubuntu, or OSMC.
    2. Use software like Etcher to write the downloaded operating system image to a microSD memory card.
    3. Insert the memory card into the Raspberry Pi and connect the necessary cables, including the HDMI cable for monitor connection and power cable.
    4. Power up the Raspberry Pi.
@@ -171,7 +176,7 @@ To run the Zozo-Assistant program on the Raspberry Pi, follow these steps:
    3. Access the Raspberry Pi terminal and navigate to the directory where the program is saved. Execute the program using the following command:
 
    ```bash
-   python3 zozo.py
+   python3 main.py
    ```
 
 This command will run the Zozo-Assistant program and display the result.
